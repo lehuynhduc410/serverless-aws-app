@@ -35,7 +35,7 @@ export async function createTodo(
         todoId,
         createdAt,
         done: false,
-        attachmentUtils: s3AttachmentUrl,
+        attachmentUrl: s3AttachmentUrl,
         ...newTodo
     }
 
@@ -63,8 +63,8 @@ export async function deleteTodo(
 
 // create attachment function
 export async function createAttachmentPresignedUrl(
-    userId: string,
-    todoId: string
+    todoId: string,
+    userId: string
 ): Promise<string> {
     logger.info('Create attachment function called by user', userId, todoId)
     return attachmentUtils.getUploadUrl(todoId)
